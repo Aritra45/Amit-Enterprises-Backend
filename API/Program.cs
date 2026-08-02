@@ -2,6 +2,7 @@ using System.Security.Claims;
 using System.Text;
 using API.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -29,6 +30,14 @@ builder.Host.UseSerilog((context, loggerConfiguration) =>
         .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day);
 });
 
+// ── FORWARDED HEADERS ────────────────────────────────────────────────────
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownIPNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 // ── MODULES ──────────────────────────────────────────────────────────────
 builder.Services.AddSharedInfrastructure();
 builder.Services.AddIdentityModule(builder.Configuration);
@@ -36,6 +45,19 @@ builder.Services.AddMasterModule(builder.Configuration);
 builder.Services.AddBookingModule(builder.Configuration);
 
 // ── CORS ─────────────────────────────────────────────────────────────────
+static string[] GetValidatedProductionOrigins(IConfiguration configuration)
+{
+    var rawOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
+
+    return rawOrigins
+        .Where(origin => !string.IsNullOrWhiteSpace(origin))
+        .Select(origin => origin.Trim().TrimEnd('/'))
+        .Where(origin => Uri.TryCreate(origin, UriKind.Absolute, out var uri)
+            && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps))
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .ToArray();
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(FrontendCorsPolicy, policy =>
@@ -55,8 +77,7 @@ builder.Services.AddCors(options =>
         }
         else
         {
-            var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
-            policy.WithOrigins(allowedOrigins);
+            policy.WithOrigins(GetValidatedProductionOrigins(builder.Configuration));
         }
 
         policy.AllowAnyHeader()
@@ -157,6 +178,15 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+// ── FORWARDED HEADERS (Render terminates TLS and proxies plain HTTP to this
+// container) ────────────────────────────────────────────────────────────
+// Trust boundary: Render's containers are not directly reachable from the
+// public internet — the only inbound hop is Render's own load balancer, and
+// its IP isn't published/fixed, so KnownProxies/KnownNetworks are cleared to
+// accept X-Forwarded-* from that single hop. Do not clear these if this app
+// is ever placed behind an additional, untrusted proxy.
+app.UseForwardedHeaders();
+
 // ── SWAGGER UI (development only) ─────────────────────────────────────────
 if (app.Environment.IsDevelopment())
 {
@@ -181,7 +211,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// ── HEALTH CHECK ─────────────────────────────────────────────────────────
+app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }))
+   .AllowAnonymous();
+
 // ── AUTO MIGRATION + SEEDING ───────────────────────────────────────────────
+// NOTE: running migrations from application startup means every instance
+// that boots concurrently (e.g. a rolling deploy with >1 instance) will race
+// to apply the same migrations. On a paid Render plan, prefer moving this to
+// a separate Render "pre-deploy command" that runs once before instances
+// start, instead of on every process startup.
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -203,7 +242,15 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        logger.LogError(ex, "Error applying database migrations.");
+        logger.LogCritical(ex, "Error applying database migrations.");
+
+        // Development stays developer-friendly (e.g. local DB not up yet).
+        // Everywhere else, a failed migration must stop the app from
+        // starting rather than serving traffic against a stale/broken schema.
+        if (!app.Environment.IsDevelopment())
+        {
+            throw;
+        }
     }
 }
 
