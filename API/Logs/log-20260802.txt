@@ -12132,3 +12132,280 @@ ORDER BY p0."CreatedOn"
 2026-08-02 18:39:42.816 +05:30 [INF] Executed endpoint 'Modules.Master.Controllers.ProductsController.GetAll (Modules.Master)'
 2026-08-02 18:39:42.816 +05:30 [INF] HTTP GET /api/master/products responded 200 in 1228.4855 ms
 2026-08-02 18:39:42.816 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/api/master/products?pageNumber=1&pageSize=60&sortDescending=false - 200 null application/json; charset=utf-8 1228.9899ms
+2026-08-02 19:02:22.275 +05:30 [INF] Executed DbCommand (158ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM dbo."__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-08-02 19:02:22.675 +05:30 [INF] Executed DbCommand (142ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-02 19:02:22.890 +05:30 [INF] Executed DbCommand (146ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM pg_namespace WHERE nspname = 'dbo') THEN
+        CREATE SCHEMA dbo;
+    END IF;
+END $EF$;
+CREATE TABLE IF NOT EXISTS dbo."__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2026-08-02 19:02:23.186 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE dbo."__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2026-08-02 19:02:23.324 +05:30 [INF] Executed DbCommand (135ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM dbo."__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-08-02 19:02:23.331 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-08-02 19:02:23.946 +05:30 [INF] Executed DbCommand (136ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted"))
+2026-08-02 19:02:24.094 +05:30 [INF] Executed DbCommand (136ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Identity"."Users" AS u
+    WHERE NOT (u."IsDeleted"))
+2026-08-02 19:02:24.360 +05:30 [INF] Executed DbCommand (136ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM dbo."__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-08-02 19:02:24.518 +05:30 [INF] Executed DbCommand (138ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-02 19:02:24.658 +05:30 [INF] Executed DbCommand (136ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM pg_namespace WHERE nspname = 'dbo') THEN
+        CREATE SCHEMA dbo;
+    END IF;
+END $EF$;
+CREATE TABLE IF NOT EXISTS dbo."__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2026-08-02 19:02:24.928 +05:30 [INF] Executed DbCommand (135ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE dbo."__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2026-08-02 19:02:25.070 +05:30 [INF] Executed DbCommand (142ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM dbo."__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-08-02 19:02:25.071 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-08-02 19:02:25.538 +05:30 [INF] Executed DbCommand (137ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM dbo."__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-08-02 19:02:25.710 +05:30 [INF] Executed DbCommand (135ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-08-02 19:02:25.854 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DO $EF$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM pg_namespace WHERE nspname = 'dbo') THEN
+        CREATE SCHEMA dbo;
+    END IF;
+END $EF$;
+CREATE TABLE IF NOT EXISTS dbo."__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2026-08-02 19:02:26.137 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE dbo."__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2026-08-02 19:02:26.290 +05:30 [INF] Executed DbCommand (152ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM dbo."__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-08-02 19:02:26.290 +05:30 [INF] No migrations were applied. The database is already up to date.
+2026-08-02 19:02:26.431 +05:30 [INF] Database migrations applied successfully.
+2026-08-02 19:02:26.482 +05:30 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-08-02 19:02:26.779 +05:30 [INF] Now listening on: http://localhost:5027
+2026-08-02 19:02:26.780 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-08-02 19:02:26.780 +05:30 [INF] Hosting environment: Development
+2026-08-02 19:02:26.780 +05:30 [INF] Content root path: C:\Aritra\Personal\Amit EnterPrises\Backend\API
+2026-08-02 19:02:27.092 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/swagger/index.html - null null
+2026-08-02 19:02:27.319 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/swagger/index.html - 200 null text/html;charset=utf-8 230.312ms
+2026-08-02 19:02:27.387 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/swagger/index.js - null null
+2026-08-02 19:02:27.392 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/swagger/index.js - 200 null application/javascript;charset=utf-8 4.5589ms
+2026-08-02 19:02:27.477 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/swagger/v1/swagger.json - null null
+2026-08-02 19:02:27.873 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 396.5842ms
+2026-08-02 19:02:34.114 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - application/json 30
+2026-08-02 19:02:34.122 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-08-02 19:02:34.211 +05:30 [INF] Executing endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:02:34.250 +05:30 [INF] Route matched with {action = "ForgotPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ForgotPassword(Modules.Identity.Core.Features.Auth.Commands.ForgotPassword.ForgotPasswordCommand, System.Threading.CancellationToken) on controller Modules.Identity.Controllers.AuthController (Modules.Identity).
+2026-08-02 19:02:34.280 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-08-02 19:02:34.842 +05:30 [INF] Executed DbCommand (151ms) [Parameters=[@ToLower='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedBy", u."CreatedOn", u."Email", u."FullName", u."IsActive", u."IsDeleted", u."MobileNumber", u."PasswordHash", u."RoleId", u."UpdatedBy", u."UpdatedOn", r0."Id", r0."CreatedBy", r0."CreatedOn", r0."Description", r0."IsActive", r0."IsDeleted", r0."Name", r0."UpdatedBy", r0."UpdatedOn"
+FROM "Identity"."Users" AS u
+INNER JOIN (
+    SELECT r."Id", r."CreatedBy", r."CreatedOn", r."Description", r."IsActive", r."IsDeleted", r."Name", r."UpdatedBy", r."UpdatedOn"
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted")
+) AS r0 ON u."RoleId" = r0."Id"
+WHERE NOT (u."IsDeleted") AND lower(u."Email") = @ToLower AND NOT (u."IsDeleted")
+LIMIT 1
+2026-08-02 19:02:34.860 +05:30 [INF] Executing OkObjectResult, writing value of type 'Shared.Core.Wrapper.Result'.
+2026-08-02 19:02:34.880 +05:30 [INF] Executed action Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity) in 624.4083ms
+2026-08-02 19:02:34.881 +05:30 [INF] Executed endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:02:34.888 +05:30 [INF] HTTP POST /api/identity/auth/forgot-password responded 200 in 765.0344 ms
+2026-08-02 19:02:34.896 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - 200 null application/json; charset=utf-8 781.5962ms
+2026-08-02 19:06:29.989 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - application/json 35
+2026-08-02 19:06:30.000 +05:30 [INF] CORS policy execution successful.
+2026-08-02 19:06:30.002 +05:30 [INF] Executing endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:06:30.003 +05:30 [INF] Route matched with {action = "ForgotPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ForgotPassword(Modules.Identity.Core.Features.Auth.Commands.ForgotPassword.ForgotPasswordCommand, System.Threading.CancellationToken) on controller Modules.Identity.Controllers.AuthController (Modules.Identity).
+2026-08-02 19:06:30.154 +05:30 [INF] Executed DbCommand (139ms) [Parameters=[@ToLower='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedBy", u."CreatedOn", u."Email", u."FullName", u."IsActive", u."IsDeleted", u."MobileNumber", u."PasswordHash", u."RoleId", u."UpdatedBy", u."UpdatedOn", r0."Id", r0."CreatedBy", r0."CreatedOn", r0."Description", r0."IsActive", r0."IsDeleted", r0."Name", r0."UpdatedBy", r0."UpdatedOn"
+FROM "Identity"."Users" AS u
+INNER JOIN (
+    SELECT r."Id", r."CreatedBy", r."CreatedOn", r."Description", r."IsActive", r."IsDeleted", r."Name", r."UpdatedBy", r."UpdatedOn"
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted")
+) AS r0 ON u."RoleId" = r0."Id"
+WHERE NOT (u."IsDeleted") AND lower(u."Email") = @ToLower AND NOT (u."IsDeleted")
+LIMIT 1
+2026-08-02 19:06:30.157 +05:30 [INF] Executing OkObjectResult, writing value of type 'Shared.Core.Wrapper.Result'.
+2026-08-02 19:06:30.162 +05:30 [INF] Executed action Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity) in 158.1498ms
+2026-08-02 19:06:30.162 +05:30 [INF] Executed endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:06:30.162 +05:30 [INF] HTTP POST /api/identity/auth/forgot-password responded 200 in 169.7737 ms
+2026-08-02 19:06:30.162 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - 200 null application/json; charset=utf-8 173.52ms
+2026-08-02 19:07:12.407 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5027/api/identity/auth/login - application/json 46
+2026-08-02 19:07:12.412 +05:30 [INF] Executing endpoint 'Modules.Identity.Controllers.AuthController.Login (Modules.Identity)'
+2026-08-02 19:07:12.419 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Modules.Identity.Core.Features.Auth.Commands.Login.LoginCommand, System.Threading.CancellationToken) on controller Modules.Identity.Controllers.AuthController (Modules.Identity).
+2026-08-02 19:07:12.569 +05:30 [INF] Executed DbCommand (138ms) [Parameters=[@ToLower='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedBy", u."CreatedOn", u."Email", u."FullName", u."IsActive", u."IsDeleted", u."MobileNumber", u."PasswordHash", u."RoleId", u."UpdatedBy", u."UpdatedOn", r0."Id", r0."CreatedBy", r0."CreatedOn", r0."Description", r0."IsActive", r0."IsDeleted", r0."Name", r0."UpdatedBy", r0."UpdatedOn"
+FROM "Identity"."Users" AS u
+INNER JOIN (
+    SELECT r."Id", r."CreatedBy", r."CreatedOn", r."Description", r."IsActive", r."IsDeleted", r."Name", r."UpdatedBy", r."UpdatedOn"
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted")
+) AS r0 ON u."RoleId" = r0."Id"
+WHERE NOT (u."IsDeleted") AND lower(u."Email") = @ToLower AND NOT (u."IsDeleted")
+LIMIT 1
+2026-08-02 19:07:13.315 +05:30 [INF] Executed DbCommand (144ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?', @p7='?' (DbType = DateTime), @p8='?', @p9='?', @p10='?' (DbType = DateTime), @p11='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Identity"."RefreshTokens" ("CreatedBy", "CreatedOn", "ExpiresOn", "IsActive", "IsDeleted", "IsRevoked", "ReplacedByToken", "RevokedOn", "Token", "UpdatedBy", "UpdatedOn", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11)
+RETURNING "Id";
+2026-08-02 19:07:13.346 +05:30 [INF] Executing OkObjectResult, writing value of type 'Shared.Core.Wrapper.Result`1[[Modules.Identity.Core.Features.Auth.Commands.Login.LoginResponse, Modules.Identity.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-08-02 19:07:13.354 +05:30 [INF] Executed action Modules.Identity.Controllers.AuthController.Login (Modules.Identity) in 935.0416ms
+2026-08-02 19:07:13.354 +05:30 [INF] Executed endpoint 'Modules.Identity.Controllers.AuthController.Login (Modules.Identity)'
+2026-08-02 19:07:13.354 +05:30 [INF] HTTP POST /api/identity/auth/login responded 200 in 946.7395 ms
+2026-08-02 19:07:13.354 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5027/api/identity/auth/login - 200 null application/json; charset=utf-8 947.2096ms
+2026-08-02 19:07:13.691 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/api/master/products?pageNumber=1&pageSize=60&sortDescending=false - application/json null
+2026-08-02 19:07:13.732 +05:30 [INF] Executing endpoint 'Modules.Master.Controllers.ProductsController.GetAll (Modules.Master)'
+2026-08-02 19:07:13.738 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Modules.Master.Core.Features.Products.Queries.GetProducts.GetProductsQuery, System.Threading.CancellationToken) on controller Modules.Master.Controllers.ProductsController (Modules.Master).
+2026-08-02 19:07:13.834 +05:30 [WRN] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2026-08-02 19:07:13.992 +05:30 [INF] Executed DbCommand (138ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Master"."Products" AS p
+WHERE NOT (p."IsDeleted")
+2026-08-02 19:07:14.158 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[@p1='?' (DbType = Int32), @p='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p0."Id", p0."Barcode", p0."CategoryId", p0."CreatedBy", p0."CreatedOn", p0."CurrentStockQty", p0."GSTPercentage", p0."IsActive", p0."IsDeleted", p0."MinStockQty", p0."ProductCode", p0."ProductImage", p0."ProductName", p0."PurchasePrice", p0."SellingPrice", p0."UpdatedBy", p0."UpdatedOn", c0."Id", c0."CategoryName", c0."CreatedBy", c0."CreatedOn", c0."Description", c0."IsActive", c0."IsDeleted", c0."UpdatedBy", c0."UpdatedOn"
+FROM (
+    SELECT p."Id", p."Barcode", p."CategoryId", p."CreatedBy", p."CreatedOn", p."CurrentStockQty", p."GSTPercentage", p."IsActive", p."IsDeleted", p."MinStockQty", p."ProductCode", p."ProductImage", p."ProductName", p."PurchasePrice", p."SellingPrice", p."UpdatedBy", p."UpdatedOn"
+    FROM "Master"."Products" AS p
+    WHERE NOT (p."IsDeleted")
+    ORDER BY p."CreatedOn"
+    LIMIT @p1 OFFSET @p
+) AS p0
+INNER JOIN (
+    SELECT c."Id", c."CategoryName", c."CreatedBy", c."CreatedOn", c."Description", c."IsActive", c."IsDeleted", c."UpdatedBy", c."UpdatedOn"
+    FROM "Master"."Categories" AS c
+    WHERE NOT (c."IsDeleted")
+) AS c0 ON p0."CategoryId" = c0."Id"
+ORDER BY p0."CreatedOn"
+2026-08-02 19:07:14.176 +05:30 [INF] Executing OkObjectResult, writing value of type 'Shared.Core.Wrapper.PaginatedResult`1[[Modules.Master.Core.Features.Products.ProductResponse, Modules.Master.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-08-02 19:07:14.185 +05:30 [INF] Executed action Modules.Master.Controllers.ProductsController.GetAll (Modules.Master) in 446.6792ms
+2026-08-02 19:07:14.185 +05:30 [INF] Executed endpoint 'Modules.Master.Controllers.ProductsController.GetAll (Modules.Master)'
+2026-08-02 19:07:14.185 +05:30 [INF] HTTP GET /api/master/products responded 200 in 493.6489 ms
+2026-08-02 19:07:14.185 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/api/master/products?pageNumber=1&pageSize=60&sortDescending=false - 200 null application/json; charset=utf-8 494.2622ms
+2026-08-02 19:09:22.263 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5027/api/identity/auth/login - application/json 46
+2026-08-02 19:09:22.263 +05:30 [INF] Executing endpoint 'Modules.Identity.Controllers.AuthController.Login (Modules.Identity)'
+2026-08-02 19:09:22.263 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Modules.Identity.Core.Features.Auth.Commands.Login.LoginCommand, System.Threading.CancellationToken) on controller Modules.Identity.Controllers.AuthController (Modules.Identity).
+2026-08-02 19:09:23.376 +05:30 [INF] Executed DbCommand (138ms) [Parameters=[@ToLower='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedBy", u."CreatedOn", u."Email", u."FullName", u."IsActive", u."IsDeleted", u."MobileNumber", u."PasswordHash", u."RoleId", u."UpdatedBy", u."UpdatedOn", r0."Id", r0."CreatedBy", r0."CreatedOn", r0."Description", r0."IsActive", r0."IsDeleted", r0."Name", r0."UpdatedBy", r0."UpdatedOn"
+FROM "Identity"."Users" AS u
+INNER JOIN (
+    SELECT r."Id", r."CreatedBy", r."CreatedOn", r."Description", r."IsActive", r."IsDeleted", r."Name", r."UpdatedBy", r."UpdatedOn"
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted")
+) AS r0 ON u."RoleId" = r0."Id"
+WHERE NOT (u."IsDeleted") AND lower(u."Email") = @ToLower AND NOT (u."IsDeleted")
+LIMIT 1
+2026-08-02 19:09:34.893 +05:30 [INF] Executed action Modules.Identity.Controllers.AuthController.Login (Modules.Identity) in 12629.35ms
+2026-08-02 19:09:34.893 +05:30 [INF] Executed endpoint 'Modules.Identity.Controllers.AuthController.Login (Modules.Identity)'
+2026-08-02 19:09:34.894 +05:30 [ERR] HTTP POST /api/identity/auth/login responded 500 in 12630.9357 ms
+Shared.Core.Exceptions.UnauthorizedException: Invalid email or password.
+   at Modules.Identity.Core.Features.Auth.Commands.Login.LoginCommandHandler.Handle(LoginCommand request, CancellationToken cancellationToken) in C:\Aritra\Personal\Amit EnterPrises\Backend\Modules\Identity\Modules.Identity.Core\Features\Auth\Commands\Login\LoginCommandHandler.cs:line 41
+   at Modules.Booking.Core.Extensions.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Aritra\Personal\Amit EnterPrises\Backend\Modules\Booking\Modules.Booking.Core\Extensions\ValidationBehaviour.cs:line 34
+   at Modules.Master.Core.Extensions.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Aritra\Personal\Amit EnterPrises\Backend\Modules\Master\Modules.Master.Core\Extensions\ValidationBehaviour.cs:line 34
+   at Modules.Identity.Core.Extensions.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Aritra\Personal\Amit EnterPrises\Backend\Modules\Identity\Modules.Identity.Core\Extensions\ValidationBehaviour.cs:line 34
+   at Modules.Identity.Controllers.AuthController.Login(LoginCommand command, CancellationToken cancellationToken) in C:\Aritra\Personal\Amit EnterPrises\Backend\Modules\Identity\Modules.Identity\Controllers\AuthController.cs:line 40
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-08-02 19:09:34.977 +05:30 [WRN] UnauthorizedException: Invalid email or password.
+2026-08-02 19:09:34.980 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5027/api/identity/auth/login - 401 null application/json 12717.8441ms
+2026-08-02 19:09:50.975 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - application/json 30
+2026-08-02 19:09:50.975 +05:30 [INF] Executing endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:09:50.975 +05:30 [INF] Route matched with {action = "ForgotPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ForgotPassword(Modules.Identity.Core.Features.Auth.Commands.ForgotPassword.ForgotPasswordCommand, System.Threading.CancellationToken) on controller Modules.Identity.Controllers.AuthController (Modules.Identity).
+2026-08-02 19:09:51.119 +05:30 [INF] Executed DbCommand (136ms) [Parameters=[@ToLower='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedBy", u."CreatedOn", u."Email", u."FullName", u."IsActive", u."IsDeleted", u."MobileNumber", u."PasswordHash", u."RoleId", u."UpdatedBy", u."UpdatedOn", r0."Id", r0."CreatedBy", r0."CreatedOn", r0."Description", r0."IsActive", r0."IsDeleted", r0."Name", r0."UpdatedBy", r0."UpdatedOn"
+FROM "Identity"."Users" AS u
+INNER JOIN (
+    SELECT r."Id", r."CreatedBy", r."CreatedOn", r."Description", r."IsActive", r."IsDeleted", r."Name", r."UpdatedBy", r."UpdatedOn"
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted")
+) AS r0 ON u."RoleId" = r0."Id"
+WHERE NOT (u."IsDeleted") AND lower(u."Email") = @ToLower AND NOT (u."IsDeleted")
+LIMIT 1
+2026-08-02 19:09:51.275 +05:30 [INF] Executed DbCommand (147ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."CreatedBy", p."CreatedOn", p."ExpiresOn", p."IsActive", p."IsDeleted", p."IsUsed", p."IsVerified", p."OtpHash", p."UpdatedBy", p."UpdatedOn", p."UserId"
+FROM "Identity"."PasswordResetOtps" AS p
+WHERE NOT (p."IsDeleted") AND p."UserId" = @userId AND NOT (p."IsUsed") AND NOT (p."IsDeleted")
+2026-08-02 19:09:51.736 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = DateTime), @p10='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Identity"."PasswordResetOtps" ("CreatedBy", "CreatedOn", "ExpiresOn", "IsActive", "IsDeleted", "IsUsed", "IsVerified", "OtpHash", "UpdatedBy", "UpdatedOn", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+RETURNING "Id";
+2026-08-02 19:09:56.036 +05:30 [INF] Executing OkObjectResult, writing value of type 'Shared.Core.Wrapper.Result'.
+2026-08-02 19:09:56.036 +05:30 [INF] Executed action Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity) in 5060.9587ms
+2026-08-02 19:09:56.036 +05:30 [INF] Executed endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:09:56.036 +05:30 [INF] HTTP POST /api/identity/auth/forgot-password responded 200 in 5061.4101 ms
+2026-08-02 19:09:56.036 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - 200 null application/json; charset=utf-8 5061.8034ms
+2026-08-02 19:11:00.842 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - application/json 30
+2026-08-02 19:11:00.842 +05:30 [INF] Executing endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:11:00.843 +05:30 [INF] Route matched with {action = "ForgotPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ForgotPassword(Modules.Identity.Core.Features.Auth.Commands.ForgotPassword.ForgotPasswordCommand, System.Threading.CancellationToken) on controller Modules.Identity.Controllers.AuthController (Modules.Identity).
+2026-08-02 19:11:01.009 +05:30 [INF] Executed DbCommand (164ms) [Parameters=[@ToLower='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedBy", u."CreatedOn", u."Email", u."FullName", u."IsActive", u."IsDeleted", u."MobileNumber", u."PasswordHash", u."RoleId", u."UpdatedBy", u."UpdatedOn", r0."Id", r0."CreatedBy", r0."CreatedOn", r0."Description", r0."IsActive", r0."IsDeleted", r0."Name", r0."UpdatedBy", r0."UpdatedOn"
+FROM "Identity"."Users" AS u
+INNER JOIN (
+    SELECT r."Id", r."CreatedBy", r."CreatedOn", r."Description", r."IsActive", r."IsDeleted", r."Name", r."UpdatedBy", r."UpdatedOn"
+    FROM "Identity"."Roles" AS r
+    WHERE NOT (r."IsDeleted")
+) AS r0 ON u."RoleId" = r0."Id"
+WHERE NOT (u."IsDeleted") AND lower(u."Email") = @ToLower AND NOT (u."IsDeleted")
+LIMIT 1
+2026-08-02 19:11:01.159 +05:30 [INF] Executed DbCommand (149ms) [Parameters=[@userId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."CreatedBy", p."CreatedOn", p."ExpiresOn", p."IsActive", p."IsDeleted", p."IsUsed", p."IsVerified", p."OtpHash", p."UpdatedBy", p."UpdatedOn", p."UserId"
+FROM "Identity"."PasswordResetOtps" AS p
+WHERE NOT (p."IsDeleted") AND p."UserId" = @userId AND NOT (p."IsUsed") AND NOT (p."IsDeleted")
+2026-08-02 19:11:01.481 +05:30 [INF] Executed DbCommand (153ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?', @p2='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = DateTime), @p6='?' (DbType = DateTime), @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean), @p10='?' (DbType = Boolean), @p11='?', @p12='?', @p13='?' (DbType = DateTime), @p14='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Identity"."PasswordResetOtps" SET "IsUsed" = @p0, "UpdatedBy" = @p1, "UpdatedOn" = @p2
+WHERE "Id" = @p3;
+INSERT INTO "Identity"."PasswordResetOtps" ("CreatedBy", "CreatedOn", "ExpiresOn", "IsActive", "IsDeleted", "IsUsed", "IsVerified", "OtpHash", "UpdatedBy", "UpdatedOn", "UserId")
+VALUES (@p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14)
+RETURNING "Id";
+2026-08-02 19:11:05.211 +05:30 [INF] Executing OkObjectResult, writing value of type 'Shared.Core.Wrapper.Result'.
+2026-08-02 19:11:05.212 +05:30 [INF] Executed action Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity) in 4368.8137ms
+2026-08-02 19:11:05.212 +05:30 [INF] Executed endpoint 'Modules.Identity.Controllers.AuthController.ForgotPassword (Modules.Identity)'
+2026-08-02 19:11:05.212 +05:30 [INF] HTTP POST /api/identity/auth/forgot-password responded 200 in 4369.5385 ms
+2026-08-02 19:11:05.212 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5027/api/identity/auth/forgot-password - 200 null application/json; charset=utf-8 4369.9925ms
