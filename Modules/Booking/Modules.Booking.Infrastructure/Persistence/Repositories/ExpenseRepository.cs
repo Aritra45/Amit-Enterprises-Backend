@@ -26,12 +26,12 @@ public class ExpenseRepository : Repository<Expense, BookingDbContext>, IExpense
 
         if (fromDate.HasValue)
         {
-            query = query.Where(e => e.ExpenseDate >= fromDate.Value);
+            query = query.Where(e => e.ExpenseDate >= DateTime.SpecifyKind(fromDate.Value, DateTimeKind.Utc));
         }
 
         if (toDate.HasValue)
         {
-            query = query.Where(e => e.ExpenseDate < toDate.Value);
+            query = query.Where(e => e.ExpenseDate < DateTime.SpecifyKind(toDate.Value, DateTimeKind.Utc));
         }
 
         if (!string.IsNullOrWhiteSpace(category))
@@ -67,12 +67,22 @@ public class ExpenseRepository : Repository<Expense, BookingDbContext>, IExpense
     }
 
     public async Task<double> GetTotalExpensesAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
-        => await DbSet
+    {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
+        return await DbSet
             .Where(e => !e.IsDeleted && e.ExpenseDate >= fromDateUtc && e.ExpenseDate < toDateUtc)
             .SumAsync(e => (double?)e.Amount, cancellationToken) ?? 0;
+    }
 
     public async Task<List<Expense>> GetExpensesBetweenAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
-        => await DbSet
+    {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
+        return await DbSet
             .Where(e => !e.IsDeleted && e.ExpenseDate >= fromDateUtc && e.ExpenseDate < toDateUtc)
             .ToListAsync(cancellationToken);
+    }
 }

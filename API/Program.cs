@@ -99,6 +99,9 @@ if (jwtSettings is null || string.IsNullOrWhiteSpace(jwtSettings.Key))
 // ── CLOUDINARY SETTINGS (STRONGLY TYPED) ──────────────────────────────────
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
 
+// ── EMAIL SETTINGS (STRONGLY TYPED) ───────────────────────────────────────
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
 // ── REGISTER JWT BEARER EVENTS HANDLER (checks the logout blacklist) ─────
 builder.Services.AddScoped<JwtBearerEventsHandler>();
 

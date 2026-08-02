@@ -34,12 +34,12 @@ public class StockTransactionRepository : Repository<StockTransaction, BookingDb
 
         if (fromDate.HasValue)
         {
-            query = query.Where(t => t.CreatedOn >= fromDate.Value);
+            query = query.Where(t => t.CreatedOn >= DateTime.SpecifyKind(fromDate.Value, DateTimeKind.Utc));
         }
 
         if (toDate.HasValue)
         {
-            query = query.Where(t => t.CreatedOn < toDate.Value);
+            query = query.Where(t => t.CreatedOn < DateTime.SpecifyKind(toDate.Value, DateTimeKind.Utc));
         }
 
         var totalCount = await query.CountAsync(cancellationToken);

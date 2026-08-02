@@ -4,11 +4,14 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Modules.Identity.Core.Features.Auth.Commands.ChangePassword;
+using Modules.Identity.Core.Features.Auth.Commands.ForgotPassword;
 using Modules.Identity.Core.Features.Auth.Commands.Login;
 using Modules.Identity.Core.Features.Auth.Commands.Logout;
 using Modules.Identity.Core.Features.Auth.Commands.RefreshToken;
 using Modules.Identity.Core.Features.Auth.Commands.Register;
+using Modules.Identity.Core.Features.Auth.Commands.ResetPassword;
 using Modules.Identity.Core.Features.Auth.Commands.UpdateProfile;
+using Modules.Identity.Core.Features.Auth.Commands.VerifyOtp;
 using Modules.Identity.Core.Features.Auth.Queries.GetProfile;
 using Shared.Core.Constants;
 
@@ -61,6 +64,21 @@ public class AuthController : ControllerBase
     [HttpPost("change-password")]
     [Authorize]
     public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand command, CancellationToken cancellationToken)
+        => Ok(await _mediator.Send(command, cancellationToken));
+
+    [HttpPost("forgot-password")]
+    [AllowAnonymous]
+    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordCommand command, CancellationToken cancellationToken)
+        => Ok(await _mediator.Send(command, cancellationToken));
+
+    [HttpPost("verify-otp")]
+    [AllowAnonymous]
+    public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpCommand command, CancellationToken cancellationToken)
+        => Ok(await _mediator.Send(command, cancellationToken));
+
+    [HttpPost("reset-password")]
+    [AllowAnonymous]
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand command, CancellationToken cancellationToken)
         => Ok(await _mediator.Send(command, cancellationToken));
 
     [HttpPut("profile")]

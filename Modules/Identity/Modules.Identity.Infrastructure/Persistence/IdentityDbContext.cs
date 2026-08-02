@@ -18,6 +18,8 @@ public class IdentityDbContext : AuditableDbContext
 
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
+    public DbSet<PasswordResetOtp> PasswordResetOtps => Set<PasswordResetOtp>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

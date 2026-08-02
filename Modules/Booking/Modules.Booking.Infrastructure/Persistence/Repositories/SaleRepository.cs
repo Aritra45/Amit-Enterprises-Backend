@@ -38,12 +38,12 @@ public class SaleRepository : Repository<Sale, BookingDbContext>, ISaleRepositor
 
         if (fromDate.HasValue)
         {
-            query = query.Where(s => s.SaleDate >= fromDate.Value);
+            query = query.Where(s => s.SaleDate >= DateTime.SpecifyKind(fromDate.Value, DateTimeKind.Utc));
         }
 
         if (toDate.HasValue)
         {
-            query = query.Where(s => s.SaleDate < toDate.Value);
+            query = query.Where(s => s.SaleDate < DateTime.SpecifyKind(toDate.Value, DateTimeKind.Utc));
         }
 
         if (!string.IsNullOrWhiteSpace(invoiceSearch))
@@ -69,12 +69,22 @@ public class SaleRepository : Repository<Sale, BookingDbContext>, ISaleRepositor
     }
 
     public async Task<double> GetTotalSalesAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
-        => await DbSet
+    {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
+        return await DbSet
             .Where(s => !s.IsDeleted && s.SaleDate >= fromDateUtc && s.SaleDate < toDateUtc)
             .SumAsync(s => (double?)s.GrandTotal, cancellationToken) ?? 0;
+    }
 
     public async Task<int> GetOrdersCountAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
-        => await DbSet.CountAsync(s => !s.IsDeleted && s.SaleDate >= fromDateUtc && s.SaleDate < toDateUtc, cancellationToken);
+    {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
+        return await DbSet.CountAsync(s => !s.IsDeleted && s.SaleDate >= fromDateUtc && s.SaleDate < toDateUtc, cancellationToken);
+    }
 
     public async Task<List<Sale>> GetRecentSalesAsync(int take, CancellationToken cancellationToken = default)
         => await DbSet
@@ -94,12 +104,12 @@ public class SaleRepository : Repository<Sale, BookingDbContext>, ISaleRepositor
 
         if (fromDateUtc.HasValue)
         {
-            query = query.Where(i => i.Sale.SaleDate >= fromDateUtc.Value);
+            query = query.Where(i => i.Sale.SaleDate >= DateTime.SpecifyKind(fromDateUtc.Value, DateTimeKind.Utc));
         }
 
         if (toDateUtc.HasValue)
         {
-            query = query.Where(i => i.Sale.SaleDate < toDateUtc.Value);
+            query = query.Where(i => i.Sale.SaleDate < DateTime.SpecifyKind(toDateUtc.Value, DateTimeKind.Utc));
         }
 
         // Grouped aggregates are projected into a plain anonymous type first because EF Core's
@@ -126,6 +136,9 @@ public class SaleRepository : Repository<Sale, BookingDbContext>, ISaleRepositor
 
     public async Task<List<ProductSalesProjection>> GetProductSalesAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
     {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
         var grouped = await Context.SaleItems
             .Where(i => !i.IsDeleted && !i.Sale.IsDeleted && i.Sale.SaleDate >= fromDateUtc && i.Sale.SaleDate < toDateUtc)
             .GroupBy(i => new { i.ProductId, i.ProductName, i.ProductCode })
@@ -147,6 +160,9 @@ public class SaleRepository : Repository<Sale, BookingDbContext>, ISaleRepositor
 
     public async Task<List<DailySalesProjection>> GetDailySalesAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
     {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
         // SaleDate is stored in UTC, but the shop's "day" is an IST calendar day. Shifting by
         // the IST offset before taking .Date buckets each sale under the correct IST day
         // instead of the UTC day, which could be off by one near midnight IST.
@@ -181,7 +197,12 @@ public class SaleRepository : Repository<Sale, BookingDbContext>, ISaleRepositor
         => await GetTotalSalesAsync(fromDateUtc, toDateUtc, cancellationToken);
 
     public async Task<double> GetTotalCostOfGoodsSoldAsync(DateTime fromDateUtc, DateTime toDateUtc, CancellationToken cancellationToken = default)
-        => await Context.SaleItems
+    {
+        fromDateUtc = DateTime.SpecifyKind(fromDateUtc, DateTimeKind.Utc);
+        toDateUtc = DateTime.SpecifyKind(toDateUtc, DateTimeKind.Utc);
+
+        return await Context.SaleItems
             .Where(i => !i.IsDeleted && !i.Sale.IsDeleted && i.Sale.SaleDate >= fromDateUtc && i.Sale.SaleDate < toDateUtc)
             .SumAsync(i => (double?)(i.PurchasePrice * i.Quantity), cancellationToken) ?? 0;
+    }
 }

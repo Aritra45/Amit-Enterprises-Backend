@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Shared.Core.Abstractions;
 using Shared.Core.Settings;
+using Shared.Infrastructure.Email;
 using Shared.Infrastructure.Identity;
 using Shared.Infrastructure.Storage;
 
@@ -27,6 +28,8 @@ public static class DependencyInjection
             return new Cloudinary(account) { Api = { Secure = true } };
         });
         services.AddSingleton<IFileStorageService, CloudinaryFileStorageService>();
+
+        services.AddScoped<IEmailService, SmtpEmailService>();
 
         return services;
     }
