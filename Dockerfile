@@ -20,9 +20,7 @@ RUN dotnet publish "API/API.csproj" \
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 
-# Run as a non-root user.
-RUN adduser --disabled-password --gecos "" appuser
-USER appuser
+USER $APP_UID
 
 COPY --from=build /app/publish .
 
