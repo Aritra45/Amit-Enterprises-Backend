@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/Modules/" />
+  <Folder Name="/Modules/Booking/">
+    <Project Path="Modules/Booking/Modules.Booking.Core/Modules.Booking.Core.csproj" />
+    <Project Path="Modules/Booking/Modules.Booking.Infrastructure/Modules.Booking.Infrastructure.csproj" />
+    <Project Path="Modules/Booking/Modules.Booking/Modules.Booking.csproj" />
+  </Folder>
+  <Folder Name="/Modules/Identity/">
+    <Project Path="Modules/Identity/Modules.Identity.Core/Modules.Identity.Core.csproj" />
+    <Project Path="Modules/Identity/Modules.Identity.Infrastructure/Modules.Identity.Infrastructure.csproj" />
+    <Project Path="Modules/Identity/Modules.Identity/Modules.Identity.csproj" />
+  </Folder>
+  <Folder Name="/Modules/Master/">
+    <Project Path="Modules/Master/Modules.Master.Core/Modules.Master.Core.csproj" />
+    <Project Path="Modules/Master/Modules.Master.Infrastructure/Modules.Master.Infrastructure.csproj" />
+    <Project Path="Modules/Master/Modules.Master/Modules.Master.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared/Shared.Core/Shared.Core.csproj" />
+    <Project Path="Shared/Shared.DTOs/Shared.DTOs.csproj" />
+    <Project Path="Shared/Shared.Infrastructure/Shared.Infrastructure.csproj" />
+  </Folder>
+  <Project Path="API/API.csproj" />
+</Solution>
